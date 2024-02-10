@@ -1,4 +1,4 @@
-package com.stefanini.api;
+package com.stefanini.api.produto;
 
 import lombok.Getter;
 
