@@ -12,14 +12,14 @@ public class ViaCEPClient {
 
     public Endereco consultarEnderecoPorCep(String cep) {
         try {
-            // Montar a URL da API ViaCEP
+            //Montar a URL da API ViaCEP
             URL url = new URL("https://viacep.com.br/ws/" + cep + "/json");
 
-            // Abrir conexão HTTP
+            //Abrir conexão HTTP
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
-            // Ler a resposta JSON
+            //Ler a resposta JSON
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
@@ -28,15 +28,15 @@ public class ViaCEPClient {
             }
             in.close();
 
-            // Verificar se o JSON contém o campo "erro"
+            //Verificar se o JSON contém o campo "erro"
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(response.toString());
             if (jsonNode.has("erro")) {
-                // CEP não encontrado, retornar null ou um objeto Endereco vazio
+                //CEP não encontrado, retornar null ou um Endereco vazio
                 return null;
             }
 
-            // Analisar a resposta JSON e preencher o objeto Endereco
+            //Analisar a resposta JSON e preencher o Endereco
             Endereco endereco = mapper.readValue(response.toString(), Endereco.class);
 
             return endereco;
