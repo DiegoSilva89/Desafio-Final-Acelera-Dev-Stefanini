@@ -23,7 +23,6 @@ public class Cliente {
     private LocalDate nascimento;
     @NotBlank
     private String cpf;
-
     @Embedded //Adiciona essa anotação para indicar que é um atributo embutido
     private Endereco endereco;
 
@@ -33,5 +32,21 @@ public class Cliente {
         this.cpf = dados.cpf();
         this.endereco = new Endereco(dados.cep(), dados.logradouro(), dados.complemento(), dados.bairro(),
                 dados.localidade(), dados.uf(), dados.ibge(), dados.gia(), dados.ddd(), dados.siafi());
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoCliente dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.nascimento() != null) {
+            this.nascimento = dados.nascimento();
+        }
+        if (dados.cpf() != null) {
+            this.cpf = dados.cpf();
+        }
+        if (dados.cep() != null && this.endereco != null) {
+            this.endereco.atualizarCep(dados.cep());
+        }
+
     }
 }

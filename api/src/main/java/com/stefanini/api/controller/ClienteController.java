@@ -1,6 +1,7 @@
 package com.stefanini.api.controller;
 
 import com.stefanini.api.cliente.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,6 +64,21 @@ public class ClienteController {
     @GetMapping
     public Page<DadosListagemCliente> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemCliente::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoCliente dados) {
+        var cliente = repository.getReferenceById(dados.id());
+        cliente.atualizarInformacoes(dados);
+    }
+
+    //PathVariable indica que o id do parâmetro é o {id}
+    @DeleteMapping("{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        repository.deleteById(id);
+
     }
 
 }
