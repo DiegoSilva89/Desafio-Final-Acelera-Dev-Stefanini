@@ -22,6 +22,7 @@ public class Cliente {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate nascimento;
     @NotBlank
+    @Column(unique = true)
     private String cpf;
     @Embedded //Adiciona essa anotação para indicar que é um atributo embutido
     private Endereco endereco;

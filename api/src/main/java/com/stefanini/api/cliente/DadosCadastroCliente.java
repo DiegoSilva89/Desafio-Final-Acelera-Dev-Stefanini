@@ -28,14 +28,14 @@ public record DadosCadastroCliente(
         String ddd,
         String siafi) {
 
-    // Método toString personalizado para exibir os dados no formato desejado
+    //Método toString personalizado para exibir os dados no formato desejado
     @Override
     public String toString() {
         return "Nome: " + nome + ", Nascimento: " + nascimento + ", CPF: " + cpf + ", CEP: " + cep;
     }
 
     public Endereco obterEnderecoViaCEP() {
-        // Chamar o método consultarEnderecoPorCep do ViaCEPClient
+        //Chamar o método consultarEnderecoPorCep do ViaCEPClient
         ViaCEPClient viaCEPClient = new ViaCEPClient();
         return viaCEPClient.consultarEnderecoPorCep(cep);
     }
