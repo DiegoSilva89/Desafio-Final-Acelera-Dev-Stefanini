@@ -17,3 +17,17 @@ Este é um projeto Java que implementa operações CRUD para usuários e produto
 -   Leitura e armazenamento de dados de vendas a partir de uma planilha xlsx
 -   Consulta de relatório de vendas por mês
 -   Consulta de relatório de venda por usuário
+
+## Tecnologias Utilizadas
+
+-   Java
+-   Spring Boot
+-   Maven (ou Gradle)
+-   H2 Database (ou outro banco de dados de sua escolha)
+-   Apache POI (para leitura de planilhas xlsx)
+
+## Pré-requisitos
+
+-   JDK 8 ou superior instalado
+-   Maven ou Gradle instalado
+-   Um IDE Java, como Eclipse ou IntelliJ IDEA (opcional)
